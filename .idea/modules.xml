@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/jogajunto_auth_contacts.iml" filepath="$PROJECT_DIR$/jogajunto_auth_contacts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/jogajunto_auth_contacts_android.iml" filepath="$PROJECT_DIR$/android/jogajunto_auth_contacts_android.iml" />
+    </modules>
+  </component>
+</project>
