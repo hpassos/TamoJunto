@@ -3,12 +3,15 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_contact/flutter_contact.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   await Supabase.initialize(
-    url: 'https://SEU-PROJETO.supabase.co',
-    anonKey: 'SUA-CHAVE-ANON',
+    url: dotenv.env['SUPABASE_URL']!,
+    anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
   );
   runApp(const MyApp());
 }
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'JogaJunto',
+      title: 'TamoJunto',
       home: PhoneLoginPage(),
     );
   }
@@ -76,7 +79,7 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
 
   void _sendInvite(Contact contact) async {
     final phone = contact.phones.first.normalizedNumber;
-    final message = Uri.encodeComponent("Ei! Estou usando o JogaJunto para organizar jogos e campeonatos. Entra lá: https://jogajunto.app");
+    final message = Uri.encodeComponent("Ei! Estou usando o TamoJunto para organizar jogos e campeonatos. Entra lá: https://TamoJunto.app");
     final link = Uri.parse("https://wa.me/$phone?text=$message");
     if (await canLaunchUrl(link)) {
       await launchUrl(link);
